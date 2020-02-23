@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>MyStudyRoom</title>
+
+  <!-- Bootstrap from Dashio template https://templatemag.com/dashio-bootstrap-admin-template/ -->
+  <link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="static/css/zabuto_calendar.css">
+  <link rel="stylesheet" type="text/css" href="static/lib/gritter/static/css/jquery.gritter.css" />
+  <link href="static/css/style.css" rel="stylesheet">
+  <link href="static/css/style-responsive.css" rel="stylesheet">
+  <script>
+    function myFunction() {
+      // Get the checkbox
+      var checkBox = document.getElementById("check");
+      // Get the output text
+      var text = document.getElementById("hiddenText");
+
+      // Get the radio
+      var radio = document.getElementById("check2");
+
+      // Get the output text
+      var text2 = document.getElementById("hiddenText2");
+
+      // If the checkbox is checked, display the output text
+      if (checkBox.checked == true) {
+        checkBox.value = 1;
+        text.style.display = "block";
+        if (radio.checked == true) {
+        text2.style.display = "block";
+        } else {
+        text2.style.display = "none"; }
+      } else {
+        checkBox.value = 0;
+        text.style.display = "none";
+        text2.style.display = "none";
+      }
+      console.log(checkBox.value);
+    }
+  </script>
+</head>
+
+<body>
+  <!-- container start -->
+  <section id="container">
+    <!-- *********************** display logo and title ************************ -->
+    <!-- header start -->
+    <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <a href="/" class="logo"><b>My<span>Study</span>ROOM</b></a>
+    </header>
+    <!-- header end -->
+
+    <!-- *************************** display sidebar *************************** -->
+    <!-- sidebar start -->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><img src="static/img/displaypic.jpg" class="img-circle" width="80"></a></p>
+          <h5 class="centered">User</h5>
+          <li class="mt">
+            <a href=".">
+              <i class="fa fa-dashboard"></i>
+              <span>Dashboard</span>
+              </a>
+          </li>
+          <li>
+            <a class="active" href="addschedule">
+              <i class="fa fa-calendar-plus-o"></i>
+              <span>Add Schedule</span>
+              </a>
+          </li>
+          <li>
+            <a href="manageschedules">
+              <i class="fa fa-calendar"></i>
+              <span>Manage Schedules</span>
+              </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <!-- sidebar end -->
+
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Add Schedules</h3>
+        <!-- BASIC FORM ELELEMNTS -->
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <h4 class="mb"><i class="fa fa-angle-right"></i> Use this form to schedule alarms as you wish. </h4>
+               <form role="form" method="POST" action="/api/insertdata">
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Schedule Name</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" type="text" name="taskname" placeholder="Schedule Name"><br>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Schedule Description</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" type="text" name="taskdescription" placeholder="Schedule Description"><br>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Set Time</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" type="datetime-local" name="triggertime" min="2020-2-5T08:30" max="3000-06-30T16:30" required><br>
+                  </div>
+                </div>
+                <div>
+                    <input class="custom-control-input" type="checkbox" value="1" name="recurrentcheck" id="check" onclick="myFunction()">
+                    <label class="custom-control-label" for="check">Recurrency</label>
+                    <input type="hidden" name="recurrentcheck" value="0">
+                </div>
+                <div id="hiddenText" style="display:none">
+                    <div>
+                        <input type="radio" name="repeatfreq" value="minute" id="customRadio1" onclick="myFunction()">
+                        <label for="customRadio1">Every minute</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="repeatfreq" value="hour" id="customRadio2" onclick="myFunction()">
+                        <label for="customRadio2">Every hour</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="repeatfreq" value="day" id="customRadio3" onclick="myFunction()">
+                        <label for="customRadio3">Every day</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="repeatfreq" value="week" id="customRadio4" onclick="myFunction()">
+                        <label for="customRadio4">Every week</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="repeatfreq" value="month" id="customRadio5" onclick="myFunction()">
+                        <label for="customRadio5">Every month</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="repeatfreq" value="year" id="customRadio6" onclick="myFunction()">
+                        <label for="customRadio6">Every year</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="repeatfreq" value="custom" id="check2" onclick="myFunction()">
+                        <label for="check2">Custom</label><br>
+                    </div>
+                    <input type="hidden" name="repeatfreq" value="none">
+                </div>
+                <div id="hiddenText2" style="display:none">
+                    <div class="form-group">
+                      <label class="col-sm-2 col-sm-2 control-label">Intervals</label>
+                        <div class="col-sm-10">
+                        <input class="form-control" id="recurrentint" name="recurrentint" placeholder="(Intervals) Every..." type="number" min="1">
+                        </div>
+                    </div>
+                    <div>
+                        <input type="radio" name="recurrentfreq" value="minutes" class="custom-control-input" id="customRadio8">
+                        <label for="customRadio8">Minutes</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="recurrentfreq" value="hours" class="custom-control-input" id="customRadio9">
+                        <label for="customRadio9">Hours</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="recurrentfreq" value="days" class="custom-control-input" id="customRadio10">
+                        <label for="customRadio10">Days</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="recurrentfreq" value="weeks" class="custom-control-input" id="customRadio11">
+                        <label for="customRadio11">Weeks</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="recurrentfreq" value="months" class="custom-control-input" id="customRadio12">
+                        <label for="customRadio12">Months</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="recurrentfreq" value="years" class="custom-control-input" id="customRadio13">
+                        <label for="customRadio13">Years</label><br>
+                    </div>
+                    <input type="hidden" name="recurrentfreq" value="none">
+                </div>
+                <div class="text-center">
+                  <input type="submit" value="Submit">
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- col-lg-12-->
+        </div>
+        <!-- /row -->
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer" style="margin-top:400px">
+      <div class="text-center">
+        <p>
+          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+        </p>
+        <div class="credits">
+          <!--
+            You are NOT allowed to delete the credit link to TemplateMag with free version.
+            You can delete the credit link only if you bought the pro version.
+            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+            Licensing information: https://templatemag.com/license/
+          -->
+          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+        </div>
+      </div>
+    </footer>
+    <!--footer end-->
+  </section>
+
+  <!-- ************************* scripts from template *********************** -->
+  <script src="static/lib/jquery/jquery.min.js"></script>
+  <script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="static/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="static/lib/jquery.scrollTo.min.js"></script>
+  <script src="static/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="static/lib/common-scripts.js"></script>
+  <script src="static/lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script src="static/lib/bootstrap-switch.js"></script>
+  <script src="static/lib/jquery.tagsinput.js"></script>
+  <script type="text/javascript" src="static/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="static/lib/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" src="static/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="static/lib/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+  <script src="static/lib/form-component.js"></script>
+
+</body>
+</html>
