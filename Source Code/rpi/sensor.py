@@ -12,7 +12,6 @@ import json
 import utils
 import serial
 from multiprocessing import Process
-import random
 
 start_light_program = False
 start_distance_program = False
@@ -122,8 +121,7 @@ def dhtmain():
   while update:
     try:     
       # get the values needed (current temperature,humidity and datetime)
-      #humidity, temperature = Adafruit_DHT.read_retry(11, dhtpin)
-      humidity, temperature = random.randint(50,55), random.randint(24,26)
+      humidity, temperature = Adafruit_DHT.read_retry(11, dhtpin)
       n = datetime.now()
       date_time = n.strftime("%Y-%m-%d %H:%M:%S") # type:string
       humidity = int(humidity)                    # type:int
