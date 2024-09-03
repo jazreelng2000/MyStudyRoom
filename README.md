@@ -1,5 +1,7 @@
 # MyStudyRoom
-This is an IoT application that is used for constructing a conducive environment for studying and it is mainly targeted on students who study at home. The application is divided into 4 parts, which are temperature and humidity program, light program, laptop viewing distance program, and scheduling program.
+This is an IoT application that is used for constructing a conducive environment for studying and it is mainly targeted on students who study at home. The application is divided into 4 parts, which are temperature and humidity program, light program, laptop viewing distance program, and scheduling program. 
+
+Check out the Wiki tab for our documentation on its set-up. We also have a video demonstration and walkthrough [here.](https://www.youtube.com/watch?v=3Ot7J2-nlC8)
 
 ## Program Features
 * **Temperature and Humidity Program**
@@ -13,8 +15,6 @@ This is an IoT application that is used for constructing a conducive environment
 
 * **Scheduling Program**
 <br> With this program, users can use to set alarms for when they want to study. The schedules can be added through a form on the website and after running the scheduler program and waiting for the alarm time to reach, the AWS Polly service will be used to say the name of the schedule as well as the current time to alert the user.
-
-**Check out our step-by-step tutorial in the Wiki tab!**
 
 ## Team Member
 Jazreel Ng Wen Shin <br>
